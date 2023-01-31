@@ -7,10 +7,25 @@ export const middleware = (req: NextRequest) => {
   console.log('----------')
   console.log('headers', req.headers);
   console.log('----------')
+  // console.log('ss', req?.body?.ip)
   // console.log('socket', req.socket)
-  console.log('ip', req.ip)
+  // console.log('ip', req.ip)
 
-  if(req.ip === '120.74.170.165'){
+  // const xff =
+  // req instanceof Request
+  //     ? req.headers.get('x-forwarded-for')
+  //     : req.headers['x-forwarded-for']
+
+  const ip = req.headers.get('x-forwarded-for')
+      ? req.headers.get('x-forwarded-for')!.split(',')[0]
+      : '',
+
+  console.log('ip', ip);
+
+
+  // return NextResponse.next();
+
+  if( ip === '120.74.170.165'){
     return NextResponse.next();
   }
 
