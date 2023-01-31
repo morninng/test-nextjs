@@ -18,7 +18,7 @@ export const middleware = (req: NextRequest) => {
 
   const ip = req.headers.get('x-forwarded-for')
       ? req.headers.get('x-forwarded-for')!.split(',')[0]
-      : '',
+      : '';
 
   console.log('ip', ip);
 
