@@ -10,6 +10,12 @@ export const middleware = (req: NextRequest) => {
   // console.log('socket', req.socket)
   console.log('ip', req.ip)
 
+  if(req.ip === '120.74.170.165'){
+    return NextResponse.next();
+  }
+
+
+
   const basicAuth = req.headers.get('authorization');
   if (basicAuth) {
     const auth = basicAuth.split(' ')[1];
